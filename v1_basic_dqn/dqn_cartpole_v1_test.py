@@ -7,18 +7,19 @@ import numpy as np
 import pandas as pd
 import os
 from collections import deque
-# 현재 실행 중인 파일이 위치한 디렉토리 가져오기
+
+# Get the directory of the currently running file
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 해당 디렉토리에 파일 저장되도록 경로 설정
+# Set paths for saving results
 CSV_FILE = os.path.join(BASE_DIR, "dqn_cartpole_v1_results.csv")
 TXT_FILE = os.path.join(BASE_DIR, "dqn_cartpole_v1_summary.txt")
 
-# 환경 설정
+# Environment setup
 def create_env():
     return gym.make("CartPole-v1")
 
-# DQN 모델 정의
+# DQN Model Definition
 class DQN(nn.Module):
     def __init__(self, state_size, action_size):
         super(DQN, self).__init__()
@@ -31,16 +32,16 @@ class DQN(nn.Module):
         x = torch.relu(self.fc2(x))
         return self.fc3(x)
 
-# 하이퍼파라미터 설정
+# Hyperparameters
 gamma = 0.99
 epsilon = 1.0
 epsilon_min = 0.01
-epsilon_decay = 0.995  # 탐색 감소율
+epsilon_decay = 0.995  # Exploration decay rate
 learning_rate = 0.001
 batch_size = 32
-memory_size = 5000  # 메모리 크기 증가
+memory_size = 5000  # Increased memory size
 train_start = 1000
-N = 5  # 타겟 네트워크 업데이트 간격
+N = 5  # Target network update interval
 
 def train_dqn(q_network, target_network, memory, optimizer, loss_fn, device):
     if len(memory) < train_start:
@@ -64,7 +65,7 @@ def train_dqn(q_network, target_network, memory, optimizer, loss_fn, device):
     loss.backward()
     optimizer.step()
 
-# DQN 실험 실행
+# Run DQN Experiment
 def run_experiment(episodes=300, trials=50):
     device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     results = []
@@ -126,24 +127,24 @@ def run_experiment(episodes=300, trials=50):
 
         results.append([trial+1, min_score, max_score, avg_score, std_dev])
         env.close()
-        print(f"Trial {trial+1}/{trials} 완료: 평균 {avg_score:.2f}, 표준편차 {std_dev:.2f}")
+        print(f"Trial {trial+1}/{trials} completed: Avg {avg_score:.2f}, Std Dev {std_dev:.2f}")
     
-    # 결과 CSV 파일 저장
-    df = pd.DataFrame(results, columns=["실험번호", "최저점수", "최고점수", "평균점수", "표준편차"])
+    # Save results to CSV
+    df = pd.DataFrame(results, columns=["Trial", "Min Score", "Max Score", "Average Score", "Std Dev"])
     df.to_csv(CSV_FILE, index=False)
     
-    # 요약본 TXT 저장
+    # Save summary to TXT
     with open(TXT_FILE, "w") as f:
-        f.write("🔥 DQN 실험 결과 (50번 반복 테스트)\n")
+        f.write("🔥 DQN Experiment Results (50 Trial Runs)\n")
         f.write("------------------------------------\n")
         for row in results:
-            f.write(f"[실험 {row[0]}] 최저: {row[1]}, 최고: {row[2]}, 평균: {row[3]:.2f}, 표준편차: {row[4]:.2f}\n")
+            f.write(f"[Trial {row[0]}] Min: {row[1]}, Max: {row[2]}, Avg: {row[3]:.2f}, Std Dev: {row[4]:.2f}\n")
         f.write("------------------------------------\n")
-        f.write(f"📊 전체 평균:\n")
-        f.write(f"- 최저점 평균: {np.mean([r[1] for r in results]):.2f}\n")
-        f.write(f"- 최고점 평균: {np.mean([r[2] for r in results]):.2f}\n")
-        f.write(f"- 평균 점수 평균: {np.mean([r[3] for r in results]):.2f}\n")
-        f.write(f"- 표준편차 평균: {np.mean([r[4] for r in results]):.2f}\n")
+        f.write(f"📊 Overall Averages:\n")
+        f.write(f"- Min Score Avg: {np.mean([r[1] for r in results]):.2f}\n")
+        f.write(f"- Max Score Avg: {np.mean([r[2] for r in results]):.2f}\n")
+        f.write(f"- Average Score: {np.mean([r[3] for r in results]):.2f}\n")
+        f.write(f"- Std Dev Avg: {np.mean([r[4] for r in results]):.2f}\n")
 
 if __name__ == "__main__":
     run_experiment()
