@@ -6,12 +6,12 @@ import random
 import numpy as np
 from collections import deque
 
-# 1️⃣ Environment setup
+# 1️⃣ Environment Setup
 env = gym.make("CartPole-v1")  
 state_size = env.observation_space.shape[0]
 action_size = env.action_space.n
 
-# 2️⃣ DQN Model Definition
+# 2️⃣ Define the DQN model
 class DQN(nn.Module):
     def __init__(self, state_size, action_size):
         super(DQN, self).__init__()
@@ -31,28 +31,25 @@ epsilon_min = 0.01
 epsilon_decay = 0.995
 learning_rate = 0.001  
 batch_size = 32  
-memory_size = 2000  
+memory_size = 5000  
 train_start = 1000  
+N = 5  # Target network update interval
 
-# 4️⃣ DQN Model & Optimizer Setup
+# 4️⃣ Initialize networks and optimizer
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")  
 q_network = DQN(state_size, action_size).to(device)
-target_network = DQN(state_size, action_size).to(device)  # Target network
-
-target_network.load_state_dict(q_network.state_dict())  # Synchronize initial weights
-target_network.eval()  # Target network does not train
+target_network = DQN(state_size, action_size).to(device)
+target_network.load_state_dict(q_network.state_dict())
+target_network.eval()
 
 optimizer = optim.Adam(q_network.parameters(), lr=learning_rate)
 loss_fn = nn.MSELoss()
-
-# 5️⃣ Experience Replay Memory
 memory = deque(maxlen=memory_size)
 
-# 6️⃣ DQN Training Function
+# 5️⃣ DQN Training function
 def train_dqn():
     if len(memory) < train_start:
         return
-    
     batch = random.sample(memory, batch_size)
     states, actions, rewards, next_states, dones = zip(*batch)
 
@@ -63,7 +60,7 @@ def train_dqn():
     dones = torch.tensor(dones, dtype=torch.float32).to(device)
 
     q_values = q_network(states).gather(1, actions)
-    next_q_values = target_network(next_states).max(1)[0].detach()  # Using target network
+    next_q_values = target_network(next_states).max(1)[0].detach()
     target_q_values = rewards + (gamma * next_q_values * (1 - dones))
 
     loss = loss_fn(q_values.squeeze(), target_q_values)
@@ -71,9 +68,9 @@ def train_dqn():
     loss.backward()
     optimizer.step()
 
-# 7️⃣ Training Execution (300 Episodes & Logging Last 50)
-episodes = 300  
-last_50_scores = []  # Store last 50 episode scores
+# 6️⃣ Run a single experiment
+episodes = 300
+last_50_scores = []
 
 for episode in range(episodes):
     state, _ = env.reset()
@@ -81,7 +78,7 @@ for episode in range(episodes):
     total_reward = 0
 
     for t in range(500):
-        # Action Selection (Exploration vs Exploitation)
+        # Action selection (exploration vs. exploitation)
         if random.random() < epsilon:
             action = env.action_space.sample()
         else:
@@ -89,44 +86,39 @@ for episode in range(episodes):
                 state_tensor = torch.tensor(state, dtype=torch.float32).unsqueeze(0).to(device)
                 action = torch.argmax(q_network(state_tensor)).item()
 
-        # Step in Environment
         next_state, reward, terminated, truncated, _ = env.step(action)
         next_state = np.array(next_state)
         done = terminated or truncated
         total_reward += reward
 
-        # Store Experience
+        # Store experience
         memory.append((state, action, reward, next_state, done))
-
-        # Update State
         state = next_state
-
-        # Train DQN
         train_dqn()
 
         if done:
             break
 
-    # Decrease Exploration Rate
+    # Decay exploration rate
     if epsilon > epsilon_min:
         epsilon *= epsilon_decay
 
-    # Update Target Network Every 5 Episodes
-    if episode % 5 == 0:
+    # Update target network every N episodes
+    if episode % N == 0:
         target_network.load_state_dict(q_network.state_dict())
 
-    # Store Last 50 Scores
+    # Record scores of last 50 episodes
     if episode >= 250:
         last_50_scores.append(total_reward)
 
     print(f"Episode {episode + 1}/{episodes}, Score: {total_reward}, Epsilon: {epsilon:.4f}")
 
-# 8️⃣ Analyzing Last 50 Episodes
+# 7️⃣ Evaluate last 50 episodes
 if len(last_50_scores) > 0:
     min_score = min(last_50_scores)
     max_score = max(last_50_scores)
     avg_score = sum(last_50_scores) / len(last_50_scores)
-    std_dev = np.std(last_50_scores)  # Standard deviation
+    std_dev = np.std(last_50_scores)
 
     print("\n🔥 Performance of Last 50 Episodes:")
     print(f"✅ Min Score: {min_score}")
@@ -135,4 +127,4 @@ if len(last_50_scores) > 0:
     print(f"✅ Standard Deviation: {std_dev:.2f}")
 
 print("\nTraining Complete!")
-env.close()  # Close the environment after training
+env.close()  # Close environment
