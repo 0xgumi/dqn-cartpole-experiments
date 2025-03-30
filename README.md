@@ -187,6 +187,19 @@ This allowed us to observe longer-term learning trends and better distinguish pe
 
 ---
 
+### 🧠 Final Reflections
+
+Because CartPole-v1 is a relatively simple environment, it was not always easy to see clear differences between algorithms like Basic, Double, Dueling, or PER.  
+However, as the models grew more sophisticated, we observed an increase in the number of episodes that reached the maximum score — whether it was 500 or 1000. This suggests that architectural upgrades do help agents discover optimal behaviors more frequently.
+
+One hypothesis that emerged during the analysis is the role of the epsilon-greedy strategy.  
+In this project, we used `epsilon_decay = 0.995` with only 300 episodes. This led to exploration being maintained for a longer portion of training, which may have prevented the agent from fully converging to a stable policy during evaluation.  
+Because of that, some trials using advanced structures (like Dueling or PER) may have resulted in lower scores, despite having strong potential.
+
+If similar experiments are conducted in the future, it may be worth revisiting the epsilon settings or increasing the number of episodes per trial to allow the policy more time to stabilize.
+
+---
+
 ## 📌 Blog Version  
 This project is also available on my blog:  
 🔗 [https://0xgumi.netlify.app/projects/dqn-cartpole](https://0xgumi.netlify.app/projects/dqn-cartpole)
