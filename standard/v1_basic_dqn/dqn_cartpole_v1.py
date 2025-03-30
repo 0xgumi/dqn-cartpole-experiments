@@ -6,12 +6,12 @@ import random
 import numpy as np
 from collections import deque
 
-# 1️⃣ Environment Setup
+# Environment Setup
 env = gym.make("CartPole-v1")  
 state_size = env.observation_space.shape[0]
 action_size = env.action_space.n
 
-# 2️⃣ Define the DQN model
+# Define the DQN model
 class DQN(nn.Module):
     def __init__(self, state_size, action_size):
         super(DQN, self).__init__()
@@ -24,7 +24,7 @@ class DQN(nn.Module):
         x = torch.relu(self.fc2(x))
         return self.fc3(x)
 
-# 3️⃣ Hyperparameters
+# Hyperparameters
 gamma = 0.99  
 epsilon = 1.0  
 epsilon_min = 0.01  
@@ -35,7 +35,7 @@ memory_size = 5000
 train_start = 1000  
 N = 5  # Target network update interval
 
-# 4️⃣ Initialize networks and optimizer
+# Initialize networks and optimizer
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")  
 q_network = DQN(state_size, action_size).to(device)
 target_network = DQN(state_size, action_size).to(device)
@@ -46,7 +46,7 @@ optimizer = optim.Adam(q_network.parameters(), lr=learning_rate)
 loss_fn = nn.MSELoss()
 memory = deque(maxlen=memory_size)
 
-# 5️⃣ DQN Training function
+# DQN Training function
 def train_dqn():
     if len(memory) < train_start:
         return
@@ -68,7 +68,7 @@ def train_dqn():
     loss.backward()
     optimizer.step()
 
-# 6️⃣ Run a single experiment
+# Run a single experiment
 episodes = 300
 last_50_scores = []
 
@@ -113,7 +113,7 @@ for episode in range(episodes):
 
     print(f"Episode {episode + 1}/{episodes}, Score: {total_reward}, Epsilon: {epsilon:.4f}")
 
-# 7️⃣ Evaluate last 50 episodes
+# Evaluate last 50 episodes
 if len(last_50_scores) > 0:
     min_score = min(last_50_scores)
     max_score = max(last_50_scores)

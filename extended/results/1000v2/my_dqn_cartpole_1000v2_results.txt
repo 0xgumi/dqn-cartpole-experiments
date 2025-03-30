@@ -1,0 +1,59 @@
+🔥 Double DQN Experiment Results (50 Trial Runs)
+------------------------------------
+[Trial 1] Min: 19.0, Max: 627.0, Avg: 258.94, Std Dev: 118.22, Reached 1000: 0
+[Trial 2] Min: 13.0, Max: 240.0, Avg: 148.10, Std Dev: 50.04, Reached 1000: 0
+[Trial 3] Min: 22.0, Max: 418.0, Avg: 184.48, Std Dev: 51.32, Reached 1000: 0
+[Trial 4] Min: 65.0, Max: 1000.0, Avg: 241.08, Std Dev: 131.23, Reached 1000: 1
+[Trial 5] Min: 15.0, Max: 347.0, Avg: 164.66, Std Dev: 71.61, Reached 1000: 0
+[Trial 6] Min: 78.0, Max: 403.0, Avg: 184.70, Std Dev: 57.77, Reached 1000: 0
+[Trial 7] Min: 15.0, Max: 1000.0, Avg: 307.98, Std Dev: 274.06, Reached 1000: 1
+[Trial 8] Min: 19.0, Max: 673.0, Avg: 259.46, Std Dev: 88.44, Reached 1000: 0
+[Trial 9] Min: 15.0, Max: 204.0, Avg: 116.72, Std Dev: 42.08, Reached 1000: 0
+[Trial 10] Min: 13.0, Max: 230.0, Avg: 126.86, Std Dev: 38.66, Reached 1000: 0
+[Trial 11] Min: 9.0, Max: 281.0, Avg: 136.24, Std Dev: 72.52, Reached 1000: 0
+[Trial 12] Min: 21.0, Max: 1000.0, Avg: 329.70, Std Dev: 281.58, Reached 1000: 1
+[Trial 13] Min: 17.0, Max: 340.0, Avg: 172.64, Std Dev: 57.79, Reached 1000: 0
+[Trial 14] Min: 55.0, Max: 664.0, Avg: 325.16, Std Dev: 121.00, Reached 1000: 0
+[Trial 15] Min: 15.0, Max: 178.0, Avg: 139.24, Std Dev: 45.09, Reached 1000: 0
+[Trial 16] Min: 30.0, Max: 402.0, Avg: 254.56, Std Dev: 75.91, Reached 1000: 0
+[Trial 17] Min: 55.0, Max: 617.0, Avg: 262.12, Std Dev: 123.43, Reached 1000: 0
+[Trial 18] Min: 24.0, Max: 200.0, Avg: 158.88, Std Dev: 33.42, Reached 1000: 0
+[Trial 19] Min: 34.0, Max: 1000.0, Avg: 283.74, Std Dev: 140.34, Reached 1000: 1
+[Trial 20] Min: 44.0, Max: 377.0, Avg: 237.52, Std Dev: 55.82, Reached 1000: 0
+[Trial 21] Min: 14.0, Max: 1000.0, Avg: 237.34, Std Dev: 176.91, Reached 1000: 1
+[Trial 22] Min: 39.0, Max: 387.0, Avg: 207.06, Std Dev: 66.98, Reached 1000: 0
+[Trial 23] Min: 11.0, Max: 196.0, Avg: 112.38, Std Dev: 54.61, Reached 1000: 0
+[Trial 24] Min: 16.0, Max: 173.0, Avg: 135.26, Std Dev: 34.51, Reached 1000: 0
+[Trial 25] Min: 12.0, Max: 302.0, Avg: 163.58, Std Dev: 81.98, Reached 1000: 0
+[Trial 26] Min: 13.0, Max: 234.0, Avg: 142.06, Std Dev: 58.70, Reached 1000: 0
+[Trial 27] Min: 15.0, Max: 395.0, Avg: 214.82, Std Dev: 61.59, Reached 1000: 0
+[Trial 28] Min: 43.0, Max: 525.0, Avg: 260.62, Std Dev: 88.34, Reached 1000: 0
+[Trial 29] Min: 29.0, Max: 963.0, Avg: 297.30, Std Dev: 169.76, Reached 1000: 0
+[Trial 30] Min: 26.0, Max: 993.0, Avg: 316.50, Std Dev: 205.25, Reached 1000: 0
+[Trial 31] Min: 16.0, Max: 218.0, Avg: 157.00, Std Dev: 37.58, Reached 1000: 0
+[Trial 32] Min: 9.0, Max: 1000.0, Avg: 251.96, Std Dev: 167.70, Reached 1000: 1
+[Trial 33] Min: 38.0, Max: 421.0, Avg: 244.48, Std Dev: 68.76, Reached 1000: 0
+[Trial 34] Min: 40.0, Max: 399.0, Avg: 232.98, Std Dev: 61.56, Reached 1000: 0
+[Trial 35] Min: 17.0, Max: 197.0, Avg: 135.18, Std Dev: 41.51, Reached 1000: 0
+[Trial 36] Min: 82.0, Max: 258.0, Avg: 193.28, Std Dev: 28.14, Reached 1000: 0
+[Trial 37] Min: 22.0, Max: 386.0, Avg: 179.30, Std Dev: 67.75, Reached 1000: 0
+[Trial 38] Min: 10.0, Max: 523.0, Avg: 297.92, Std Dev: 90.08, Reached 1000: 0
+[Trial 39] Min: 14.0, Max: 217.0, Avg: 146.78, Std Dev: 41.43, Reached 1000: 0
+[Trial 40] Min: 12.0, Max: 337.0, Avg: 169.94, Std Dev: 49.76, Reached 1000: 0
+[Trial 41] Min: 14.0, Max: 514.0, Avg: 169.38, Std Dev: 66.92, Reached 1000: 0
+[Trial 42] Min: 52.0, Max: 350.0, Avg: 204.20, Std Dev: 52.84, Reached 1000: 0
+[Trial 43] Min: 15.0, Max: 230.0, Avg: 160.96, Std Dev: 54.92, Reached 1000: 0
+[Trial 44] Min: 16.0, Max: 299.0, Avg: 169.22, Std Dev: 50.67, Reached 1000: 0
+[Trial 45] Min: 13.0, Max: 200.0, Avg: 143.52, Std Dev: 51.53, Reached 1000: 0
+[Trial 46] Min: 81.0, Max: 394.0, Avg: 241.62, Std Dev: 62.88, Reached 1000: 0
+[Trial 47] Min: 29.0, Max: 481.0, Avg: 228.38, Std Dev: 95.74, Reached 1000: 0
+[Trial 48] Min: 23.0, Max: 1000.0, Avg: 310.28, Std Dev: 252.69, Reached 1000: 1
+[Trial 49] Min: 24.0, Max: 499.0, Avg: 269.78, Std Dev: 89.88, Reached 1000: 0
+[Trial 50] Min: 71.0, Max: 347.0, Avg: 175.66, Std Dev: 42.29, Reached 1000: 0
+------------------------------------
+📊 Overall Averages:
+- Min Score Avg: 27.88
+- Max Score Avg: 472.78
+- Average Score: 209.23
+- Std Dev Avg: 88.07
+- Reached 1000 Ratio: 0.14
