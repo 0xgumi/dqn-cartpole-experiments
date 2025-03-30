@@ -1,4 +1,14 @@
 .DS_Store
-.DS_Store
-standard/results/*.txt
-extended/results/*.txt
+
+# Ignore all result summary text files
+standard/results/v1/dqn_cartpole_v1_results.txt
+standard/results/v2/dqn_cartpole_v2_results.txt
+standard/results/v3/dqn_cartpole_v3_results.txt
+standard/results/v4/dqn_cartpole_v4_results.txt
+standard/results/v5/dqn_cartpole_v5_results.txt
+
+extended/results/1000v1/dqn_cartpole_1000v1_results.txt
+extended/results/1000v2/dqn_cartpole_1000v2_results.txt
+extended/results/1000v3/dqn_cartpole_1000v3_results.txt
+extended/results/1000v4/dqn_cartpole_1000v4_results.txt
+extended/results/1000v5/dqn_cartpole_1000v5_results.txt
