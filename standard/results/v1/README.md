@@ -1,29 +1,30 @@
-# DQN CartPole v1 Results
+# 📊 Results – Basic DQN (v1)
 
-This folder contains the results of the **DQN (Deep Q-Network)** training on the CartPole-v1 environment using PyTorch.
+This file summarizes the evaluation results of the **basic DQN agent** on CartPole-v1.  
+We ran the experiment **50 times**, and computed the following:
 
-## Experiment Details
+---
 
-- **Environment**: OpenAI Gym `CartPole-v1`
-- **Episodes per Run**: 300
-- **Evaluation Metric**: Last 50 episode scores of each run
-- **Repetitions**: 50 independent training runs
-- **Device**: Apple MacBook (M3 Air)
+## 🧪 Score Statistics
 
-## Aggregated Results
+- **Minimum Score (Avg)**: 34.58  
+- **Maximum Score (Avg)**: 359.34  
+- **Average Score**: 192.82  
+- **Standard Deviation**: 70.60  
+- **Reached 500 Ratio**: 20%
 
-- **Average Min Score**: 34.58  
-- **Average Max Score**: 359.34  
-- **Average Mean Score**: 192.82  
-- **Average Standard Deviation**: 70.60  
+---
 
-## Files
+## 📌 Observations
 
-- `dqn_cartpole_v1_results.csv`: Summary of all 50 runs (min, max, average, std per run)
-- `dqn_cartpole_v1_results.txt`: Formatted version of the same result (for human readability)
+- The basic DQN can reach moderate scores but is prone to early failure.
+- Rarely reaches the perfect score of 500.
+- Performance is unstable depending on initialization and early exploration.
+- High variance suggests a need for better target estimation or value separation.
 
-## Notes
+---
 
-The goal of this experiment was to establish a reproducible baseline for evaluating DQN performance consistency.  
-These results will serve as a reference for future improvements such as Double DQN, Dueling DQN, etc.
+## 🔍 Notes
 
+- Same hyperparameters were used for all versions.
+- This serves as the baseline to evaluate the effect of algorithmic improvements in v2–v5.
