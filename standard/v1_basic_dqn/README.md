@@ -25,7 +25,7 @@ batch_size = 32             # Batch size for training
 memory_size = 5000          # Experience replay buffer size  
 train_start = 1000          # Start training after this many experiences  
 N = 5                       # Target network update interval  
-
+```
 ## 📁 Files and Purpose
 
 - [`dqn_cartpole_v1.py`](./dqn_cartpole_v1.py): Main training code for basic DQN  
