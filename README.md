@@ -8,14 +8,10 @@ It is structured to support multiple experimental versions, with organized resul
 ## 🧪 Motivation for Extended Experiments
 
 In the standard CartPole-v1 environment, the maximum score is capped at 500.  
-However, as our models improved (especially in versions v2~v5), we observed a saturation in the max score of 500, which limited the ability to distinguish performance across versions.
+As our models improved, this ceiling masked real differences.
+So, we ran extended experiments with a 1000-step limit to better capture long-term performance.
 
-To address this limitation, we extended the episode length to 1000 steps and ran a second set of experiments (`1000v1` to `1000v5`).  
-This allowed for more expressive comparisons and revealed deeper insights into each model's learning stability and long-term decision quality.
-
-This structure is reflected in two folders:
-- `standard/`: Regular environment with 500-step limit
-- `extended/`: Modified environment with 1000-step max per episode
+(See “Key Findings” below for detailed insights.)
 
 ---
 
@@ -46,40 +42,6 @@ dqn_cartpole/
 
 ---
 
-## 🧪 Experiment Overview
-
-This project evaluates how various improvements to the Deep Q-Network algorithm affect learning performance on CartPole-v1.
-
-**Implemented Variants:**
-
-| Version | Algorithm                                |
-|---------|-------------------------------------------|
-| v1      | Basic DQN                                 |
-| v2      | Double DQN                                |
-| v3      | Dueling DQN                               |
-| v4      | Double + Dueling DQN                      |
-| v5      | Double + Dueling + Prioritized Replay (PER) |
-
-Each version is tested under two different settings:
-
-- **Standard** (CartPole-v1 max score = 500)
-- **Extended** (custom max score = 1000)
-
-This dual setup reveals performance differences more clearly, especially when models frequently reach the 500-point cap in the standard version.
-
----
-
-## 📊 Key Findings
-
-- **PER (v5)** shows the highest peak performance but also greater variability.
-- **Dueling + Double (v4)** improves consistency but can be sensitive to exploration decay.
-- The **extended setting** provides better separation for top-performing models.
-- The **standard setting** underrepresents performance once the agent regularly scores 500.
-
-> Detailed results and interpretation are provided in each version folder and summarized in `standard/README.md` and `extended/README.md`.
-
----
-
 ## 🔧 Requirements
 
 - Python 3.10+
@@ -93,6 +55,136 @@ Install all with:
 ```bash
 pip install torch gymnasium numpy pandas
 ```
+---
+
+## 📊 Summary of Results
+
+We conducted two sets of experiments:
+
+- `standard/`: max episode = 500  
+- `extended/`: max episode = 1000
+
+Each contains 5 DQN variants (v1 ~ v5).  
+Both sets implement the same algorithms, allowing for direct comparison under different scoring constraints.  
+This structure highlights how performance trends change as the environment ceiling shifts.
+
+→ For detailed metrics and analysis, see:  
+- [standard/README.md](./standard/README.md)  
+- [extended/README.md](./extended/README.md)
+
+---
+
+## 🧪 Experiment Overview
+
+This project evaluates how various improvements to the Deep Q-Network algorithm affect learning performance on CartPole-v1.
+
+
+We applied the following settings to all experiments:
+
+```python
+gamma = 0.99                # Discount factor  
+epsilon = 1.0               # Initial exploration rate  
+epsilon_min = 0.01          # Minimum exploration rate  
+epsilon_decay = 0.995       # Exploration decay rate  
+learning_rate = 0.001       # Adam optimizer learning rate  
+batch_size = 32             # Batch size for training  
+memory_size = 5000          # Size of experience replay buffer  
+train_start = 1000          # Minimum experiences before training starts  
+N = 5                       # Target network update interval (every N episodes)  
+```
+
+---
+
+Variants Implemented:
+
+| Version | Algorithm                                |
+|---------|-------------------------------------------|
+| v1      | Basic DQN                                 |
+| v2      | Double DQN                                |
+| v3      | Dueling DQN                               |
+| v4      | Double + Dueling DQN                      |
+| v5      | Double + Dueling + Prioritized Replay (PER) |
+
+All five variants were tested in two settings:
+
+- **Standard** : default CartPole (max score = 500)
+- **Extended** : custom CartPole (max score = 1000)
+
+This structure enabled clearer comparisons when models frequently reached the max score.
+
+---
+
+## 📊 Key Findings
+
+We conducted 10 experiments in total:
+- 5 standard versions (max score = 500)
+- 5 extended versions (max score = 1000)
+
+All experiments used the same training setup and hyperparameters, allowing us to isolate the impact of algorithmic changes.
+
+Here are our main findings:
+
+- **Basic DQN (v1)**: Quickly reaches moderate performance but struggles with stability and rarely hits perfect scores.
+- **Double DQN (v2)**: Effectively reduces overestimation, resulting in improved average performance and score consistency.
+- **Dueling DQN (v3)**: Offers better state value estimation but is sensitive to noise, leading to high variance.
+- **Double + Dueling DQN (v4)**: Combines strengths of v2 and v3; balances learning efficiency and score potential.
+- **+ Prioritized Replay (v5)**: Unlocks the highest max scores (especially in extended), but also introduces severe volatility.
+
+### 🧠 Why Extended?
+
+In the standard setting, agents in v3~v5 often reached the 500-point cap.  
+This made it hard to measure improvements — hitting 500 doesn’t tell us *how much better* one model is from another.
+
+We extended the environment (max score = 1000) to fix this.  
+As a result, performance trends became clearer:  
+- **v5 consistently reached over 500**, but also showed **greater instability**
+- **v2 and v4 had strong average scores**, showing stable learning
+- **v3 lagged behind in the extended setting**, suggesting its weakness in long-term planning
+
+---
+
+📝 Summary:
+- Algorithmic upgrades improve score ceilings but often reduce stability
+- The 1000-score setup better exposes the *shape* and *reliability* of each learning curve
+- Every improvement has trade-offs — and this setup makes those trade-offs visible
+
+
+
+---
+
+### 📈 Visual Summary
+
+Below are line plots comparing average scores and optimal score ratios (500 or 1000) across all 5 versions:
+
+- **Standard Setting (max = 500):**  
+  Average score and Reached 500 Ratio (%)
+
+![](./standard/results/standard_dual_axis.png)
+
+- **Extended Setting (max = 1000):**  
+  Average score and Reached 1000 Ratio (%)
+
+![](./extended/results/extended_dual_axis.png)
+
+> Detailed results and interpretation are provided in each version folder and summarized in `standard/README.md` and `extended/README.md`.
+
+
+---
+
+## 📌 Conclusion
+
+This project demonstrates how architectural improvements to DQN affect learning performance under different evaluation ceilings.
+
+We found that:
+- Basic DQN is fast but inconsistent.
+- Upgrades like Double and Dueling help, but not always in expected ways.
+- Prioritized Replay (PER) unlocks high scores, but makes performance less reliable.
+
+To better understand these trade-offs, we extended the episode cap to 1000.  
+This allowed us to observe longer-term learning trends and better distinguish performance between versions.
+
+🔍 For more detailed discussion, please refer to the README files inside the `standard/` and `extended/` folders.
+
 ---
 
 ## 📌 Blog Version  
