@@ -6,7 +6,7 @@ It is structured to support multiple experimental versions, with organized resul
 ---
 
 ## 📁 Project Structure
-
+```
 dqn_cartpole/
 ├── standard/      ← CartPole-v1 default settings (max score = 500)
 │   ├── v1_basic_dqn/
@@ -25,7 +25,7 @@ dqn_cartpole/
 ├── results/
 │   ├── v1/ ~ v5/
 │   ├── 1000v1/ ~ 1000v5/
-
+```
 
 - Each version folder contains both training and test code.
 - The `results/` directory contains CSV files summarizing 50-trial performance metrics for each version.
@@ -78,7 +78,9 @@ Install all with:
 
 ```bash
 pip install torch gymnasium numpy pandas
+```
+---
 
-📍 Blog Version
-This project is also available on my blog:
-🔗 https://0xgumi.netlify.app/projects/dqn-cartpole
+## 📌 Blog Version  
+This project is also available on my blog:  
+🔗 [https://0xgumi.netlify.app/projects/dqn-cartpole](https://0xgumi.netlify.app/projects/dqn-cartpole)
