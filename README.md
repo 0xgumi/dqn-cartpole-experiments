@@ -5,6 +5,20 @@ It is structured to support multiple experimental versions, with organized resul
 
 ---
 
+## 🧪 Motivation for Extended Experiments
+
+In the standard CartPole-v1 environment, the maximum score is capped at 500.  
+However, as our models improved (especially in versions v2~v5), we observed a saturation in the max score of 500, which limited the ability to distinguish performance across versions.
+
+To address this limitation, we extended the episode length to 1000 steps and ran a second set of experiments (`1000v1` to `1000v5`).  
+This allowed for more expressive comparisons and revealed deeper insights into each model's learning stability and long-term decision quality.
+
+This structure is reflected in two folders:
+- `standard/`: Regular environment with 500-step limit
+- `extended/`: Modified environment with 1000-step max per episode
+
+---
+
 ## 📁 Project Structure
 ```
 dqn_cartpole/
