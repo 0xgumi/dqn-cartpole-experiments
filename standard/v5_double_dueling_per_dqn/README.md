@@ -36,4 +36,4 @@ beta_increment = 0.001     # How quickly beta moves toward 1.0
 
 - [`dqn_cartpole_v5.py`](./dqn_cartpole_v5.py): Advanced agent with PER integration  
 - [`dqn_cartpole_v5_test.py`](./dqn_cartpole_v5_test.py): 50 repeated runs for evaluation  
-- [`../../results/v5/dqn_cartpole_v5_results.csv`](../../results/v5/dqn_cartpole_v5_results.csv): CSV summary of trial outcomes
+- [`../../results/v5/dqn_cartpole_v5_results.csv`](../results/v5/dqn_cartpole_v5_results.csv): CSV summary of trial outcomes

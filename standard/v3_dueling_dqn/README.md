@@ -32,4 +32,4 @@ N = 5                       # Target network update interval
 
 - [`dqn_cartpole_v3.py`](./dqn_cartpole_v3.py): Main training code with Dueling DQN  
 - [`dqn_cartpole_v3_test.py`](./dqn_cartpole_v3_test.py): 50-trial evaluation for performance analysis  
-- [`../../results/v3/dqn_cartpole_v3_results.csv`](../../results/v3/dqn_cartpole_v3_results.csv): Result CSV summarizing 50 trials
+- [`../../results/v3/dqn_cartpole_v3_results.csv`](../results/v3/dqn_cartpole_v3_results.csv): Result CSV summarizing 50 trials

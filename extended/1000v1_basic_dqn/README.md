@@ -32,4 +32,4 @@ N = 5                       # Target network update interval
 
 - [`dqn_cartpole_1000v1.py`](./dqn_cartpole_1000v1.py): Main training script  
 - [`dqn_cartpole_1000v1_test.py`](./dqn_cartpole_1000v1_test.py): Script to run 50 trials for statistical evaluation  
-- [`../../results/1000v1/dqn_cartpole_1000v1_results.csv`](../../results/1000v1/dqn_cartpole_1000v1_results.csv): Result summary (CSV)
+- [`../results/1000v1/dqn_cartpole_1000v1_results.csv`](../results/1000v1/dqn_cartpole_1000v1_results.csv): Result summary (CSV)

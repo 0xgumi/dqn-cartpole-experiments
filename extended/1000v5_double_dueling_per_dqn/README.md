@@ -34,4 +34,4 @@ beta_increment = 0.001     # How quickly beta moves toward 1.0
 
 - [`dqn_cartpole_1000v5.py`](./dqn_cartpole_1000v5.py)  
 - [`dqn_cartpole_1000v5_test.py`](./dqn_cartpole_1000v5_test.py)  
-- [`../../results/1000v5/dqn_cartpole_1000v5_results.csv`](../../results/1000v5/dqn_cartpole_1000v5_results.csv)
+- [`../results/1000v5/dqn_cartpole_1000v5_results.csv`](../results/1000v5/dqn_cartpole_1000v5_results.csv)

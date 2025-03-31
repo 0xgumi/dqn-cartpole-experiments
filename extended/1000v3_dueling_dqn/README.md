@@ -30,4 +30,4 @@ N = 5                       # Target network update interval
 
 - [`dqn_cartpole_1000v3.py`](./dqn_cartpole_1000v3.py)  
 - [`dqn_cartpole_1000v3_test.py`](./dqn_cartpole_1000v3_test.py)  
-- [`../../results/1000v3/dqn_cartpole_1000v3_results.csv`](../../results/1000v3/dqn_cartpole_1000v3_results.csv)
+- [`../results/1000v3/dqn_cartpole_1000v3_results.csv`](../results/1000v3/dqn_cartpole_1000v3_results.csv)

@@ -32,4 +32,4 @@ N = 5                       # Target network update interval
 
 - [`dqn_cartpole_v1.py`](./dqn_cartpole_v1.py): Main training code for basic DQN  
 - [`dqn_cartpole_v1_test.py`](./dqn_cartpole_v1_test.py): Repeated training script for statistical evaluation  
-- [`results/v1/dqn_cartpole_v1_results.csv`](../../results/v1/dqn_cartpole_v1_results.csv): Output CSV of 50 trials
+- [`results/v1/dqn_cartpole_v1_results.csv`](../results/v1/dqn_cartpole_v1_results.csv): Output CSV of 50 trials

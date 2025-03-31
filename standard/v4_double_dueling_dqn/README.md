@@ -32,4 +32,4 @@ N = 5                       # Target network update interval
 
 - [`dqn_cartpole_v4.py`](./dqn_cartpole_v4.py): Combined architecture with training logic  
 - [`dqn_cartpole_v4_test.py`](./dqn_cartpole_v4_test.py): Repeated experiments for performance summary  
-- [`../../results/v4/dqn_cartpole_v4_results.csv`](../../results/v4/dqn_cartpole_v4_results.csv): CSV result of 50 trials
+- [`../../results/v4/dqn_cartpole_v4_results.csv`](../results/v4/dqn_cartpole_v4_results.csv): CSV result of 50 trials
