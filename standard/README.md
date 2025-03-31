@@ -99,5 +99,5 @@ This allowed us to better observe long-term stability, decision-making quality, 
   - `README.md`: Explanation of the version
 
 - Visualization:
-  - [Overall Graphs in dqn_cartpole/](../../results/)
+  - [Overall Graphs in dqn_cartpole/](./results/standard_dual_axis.png)
 

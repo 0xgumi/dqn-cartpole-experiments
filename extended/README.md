@@ -87,7 +87,7 @@ The longer episodes revealed score collapses that were previously hidden by the 
   - `README.md`: Version-specific explanation
 
 - Visualization:
-  - [Extended Results Graph](../../results/1000v1/extended_dual_axis.png)
+  - [Extended Results Graph](./results/extended_dual_axis.png)
 
 > 📌 For background and comparison with the 500-point setting, see [`../standard/README.md`](../standard/README.md)
 

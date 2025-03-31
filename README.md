@@ -18,27 +18,36 @@ So, we ran extended experiments with a 1000-step limit to better capture long-te
 ## 📁 Project Structure
 ```
 dqn_cartpole/
-├── standard/      ← CartPole-v1 default settings (max score = 500)
+├── standard/                    ← CartPole-v1 default (max score = 500)
 │   ├── v1_basic_dqn/
 │   ├── v2_double_dqn/
 │   ├── v3_dueling_dqn/
 │   ├── v4_double_dueling_dqn/
-│   └── v5_double_dueling_per_dqn/
-│
-├── extended/      ← Custom CartPole (max score = 1000)
+│   ├── v5_double_dueling_per_dqn/
+│   └── results/                ← Contains v1/ to v5/ result CSVs and README
+│       ├── v1/
+│       ├── v2/
+│       ├── v3/
+│       ├── v4/
+│       └── v5/
+
+├── extended/                   ← Custom CartPole (max score = 1000)
 │   ├── 1000v1_basic_dqn/
 │   ├── 1000v2_double_dqn/
 │   ├── 1000v3_dueling_dqn/
 │   ├── 1000v4_double_dueling_dqn/
-│   └── 1000v5_double_dueling_per_dqn/
-│
-├── results/
-│   ├── v1/ ~ v5/
-│   ├── 1000v1/ ~ 1000v5/
+│   ├── 1000v5_double_dueling_per_dqn/
+│   └── results/               ← Contains 1000v1/ to 1000v5/ result CSVs and README
+│       ├── 1000v1/
+│       ├── 1000v2/
+│       ├── 1000v3/
+│       ├── 1000v4/
+│       └── 1000v5/
+
 ```
 
 - Each version folder contains both training and test code.
-- The `results/` directory contains CSV files summarizing 50-trial performance metrics for each version.
+- The results/ subdirectory in each track summarizes 50-trial performance metrics for every version.
 
 ---
 
